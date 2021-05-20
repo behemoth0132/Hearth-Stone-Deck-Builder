@@ -14,6 +14,12 @@ module.exports = {
       text: {
         type: Sequelize.STRING
       },
+      img: {
+        type: Sequelize.STRING
+      },
+      type: {
+        type: Sequelize.STRING
+      },
       playerClass: {
         type: Sequelize.STRING
       },

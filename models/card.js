@@ -16,6 +16,8 @@ module.exports = (sequelize, DataTypes) => {
   Card.init({
     name: DataTypes.STRING,
     text: DataTypes.STRING,
+    img: DataTypes.STRING,
+    type: DataTypes.STRING,
     playerClass: DataTypes.STRING,
     userId: DataTypes.INTEGER
   }, {
