@@ -57,8 +57,20 @@ app.use((req, res, next) => {
 
     
     axios.request(options).then(function (response) {
-      console.log(response.data);
-      res.render('searchresults', {allCards: response.data});
+      const data = response.data.Classic;
+      console.log('------------JORDAN----------')
+      console.log(typeof data);
+      console.log(data.length)
+      const allCards = [];
+      for (let i = 0; i < data.length; i++) {
+        let card = data[i];
+        console.log(card.img);
+        if (card.img) {
+          allCards.push(card);
+        }
+      }
+      console.log('------------END----------')
+      res.render('searchresults', {allCards: allCards});
     }).catch(function (error) {
       console.error(error);
     });

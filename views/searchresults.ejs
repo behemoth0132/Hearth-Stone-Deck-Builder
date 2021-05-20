@@ -6,8 +6,8 @@
 <h1>Sample Page</h1>
 
 <ul>
-<% allCards.Classic.forEach((eachCard, searchresults) => { %>
-
+<% allCards.forEach((eachCard, searchresults) => { %>
+  <img src="<%= eachCard.img %> " alt="">
   <li>
     <%= eachCard.name %> is a <%= eachCard.type %> and a <%= eachCard.text %>
     <form method="POST" action="/cards/deck">
