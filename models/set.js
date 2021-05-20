@@ -10,12 +10,12 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
-    }
+    models.Set.hasMany(models.Card);//set has many cards
+    }  
   };
   Set.init({
     name: DataTypes.STRING,
-    cards: DataTypes.STRING
+    cardSet: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Set',

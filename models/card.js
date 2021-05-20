@@ -10,14 +10,13 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+        models.Card.belongsTo(models.Set);//card belongs to set
     }
   };
   Card.init({
     name: DataTypes.STRING,
-    type: DataTypes.STRING,
-    rarity: DataTypes.STRING,
-    cost: DataTypes.INTEGER
+    text: DataTypes.STRING,
+    playerClass: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Card',

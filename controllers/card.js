@@ -1,21 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const passport = require('../config/ppConfig');
-const db = require('../models');
 
 
-router.get('/search',(request,response) => {
-    //code to perform particular action.
-    //To access GET variable use req.query() and req.params() methods.
+
+router.get('/deck-builder', function(req, res){
+    res.render('deck-builder');
 });
 
-router.post('/search',(request,response) => {
-    //code to perform particular action.
-    //To access POST variable use req.body()methods.
-    console.log(request.body);
-});
-
-
-
+router.post('/deck-builder', passport.authenticate('local', {
+  }));
 
 module.exports = router;

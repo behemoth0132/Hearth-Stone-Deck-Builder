@@ -10,11 +10,11 @@ const isLoggedIn = require('./middleware/isLoggedIn');
 const axios = require('axios');
 const bodyParser = require('body-parser');
 const fs = require('fs');
-
+const card = require('./controllers/card');//imported from controllers card
 
 app.set('view engine', 'ejs');
 
-
+//middleware
 app.use(require('morgan')('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(__dirname + '/public'));
@@ -39,54 +39,81 @@ app.use((req, res, next) => {
 });
 
 
-const options = {//grabs all cards
-  method: 'GET',
-  url: 'https://omgvamp-hearthstone-v1.p.rapidapi.com/cards',
-  headers: {
-    'x-rapidapi-key': '19682fbbddmsh495c6ba4c6fe750p119562jsn438970264fd2',
-    'x-rapidapi-host': 'omgvamp-hearthstone-v1.p.rapidapi.com'
-  }
-};
 
 
-axios.request(options).then(function (response) {
-	console.log(response.data);
-}).catch(function (error) {
-	console.error(error);
-});
-
-const cardoptions = {//this is a card search function
-    method: 'GET',
-    url: 'https://omgvamp-hearthstone-v1.p.rapidapi.com/cards/search/%7Bname%7D',
-    headers: {
-      'x-rapidapi-key': '19682fbbddmsh495c6ba4c6fe750p119562jsn438970264fd2',
-      'x-rapidapi-host': 'omgvamp-hearthstone-v1.p.rapidapi.com'
-    }
-  };
+// const cardoptions = {//this is a card search function
+//     method: 'GET',
+//     url: 'https://omgvamp-hearthstone-v1.p.rapidapi.com/cards/search/%7Bname%7D',
+//     headers: {
+//       'x-rapidapi-key': process.env.KEY,
+//       'x-rapidapi-host': 'omgvamp-hearthstone-v1.p.rapidapi.com'
+//     }
+//   };
   
 
-app.get('/Imp', (req, res) => {
 
-    axios.get(cardoptions).then(function (response) {
-      console.log(response.data);
-      res.json(response.data);
-  }).catch(function (error) {
-      console.error(error);
-  });
+//     axios.request(cardoptions).then(function (response) {
+//       console.log(response.data);
+//   }).catch(function (error) {
+//       console.error(error);
+//   });
 
-})
+  // app.get('/', function(req, res) {
+  //   db.Card.findAll({
+  //     include: [db.Set]
+  //   }).then(function(card) {
+  //     res.render('main/index', { card: card })
+  //   }).catch(function(error) {
+  //     console.log(error)
+  //     res.status(400).render('main/404')
+  //   })
+  // })
 
-
- //searchresults page
+  // app.use('/card', require('./controllers/card'));
+  // app.use('/set', require('./controllers/set'));
+  // app.use('/class', require('./controllers/class'));
+ 
+ 
+ 
+  //searchresults page
   app.get('/searchresults', function(req, res) {
-    res.render('searchresults');
+    const options = {//grabs all cards
+      method: 'GET',
+      url: 'https://omgvamp-hearthstone-v1.p.rapidapi.com/cards',
+      headers: {
+        'x-rapidapi-key': process.env.CARDKEY,
+        'x-rapidapi-host': 'omgvamp-hearthstone-v1.p.rapidapi.com'
+      }
+    };
+
+    
+    axios.request(options).then(function (response) {
+      console.log(response.data);
+      res.render('searchresults', {allCards: response.data});
+    }).catch(function (error) {
+      console.error(error);
+    });
+
   });
 
 app.get('/', (req, res) => {
   res.render('index');
 });
 
+
+
 app.use('/auth', require('./controllers/auth'));
+
+app.use('/', card);//card route
+
+
+// app.get('/deck-builder', (req, res) => {
+//   const cards = fs.readFileSync('./models/cards.json');
+//   const cardsData = JSON.parse(cards);
+//   res.render('deck-builder', {myCards:cardsData});
+// });
+
+
 
 // Add this below /auth controllers
 app.get('/profile', isLoggedIn, (req, res) => {
@@ -94,7 +121,7 @@ app.get('/profile', isLoggedIn, (req, res) => {
   res.render('profile', { id, name, email });
 });
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;
 const server = app.listen(PORT, () => {
   console.log(`🎧 You're listening to the smooth sounds of port ${PORT} 🎧`);
 });

@@ -5,6 +5,8 @@
 
 <h1>Sample Page</h1>
 
-<% if (model) { %>
-  <%= model.content %>
-<% } %>
+<% allCards.Classic.forEach(eachCard =>{ %>
+  <p> <%= eachCard.name %> </p>
+  <p> <%= eachCard.type %> </p>
+  <p> <%= eachCard.text %> </p>
+<%}) %>

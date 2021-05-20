@@ -11,14 +11,11 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
-      type: {
+      text: {
         type: Sequelize.STRING
       },
-      rarity: {
+      playerClass: {
         type: Sequelize.STRING
-      },
-      cost: {
-        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
