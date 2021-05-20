@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('sets', {
+    await queryInterface.createTable('cards', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -11,8 +11,23 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
-      cardSet: {
+      text: {
         type: Sequelize.STRING
+      },
+      img: {
+        type: Sequelize.STRING
+      },
+      playerClass: {
+        type: Sequelize.STRING
+      },
+      type: {
+        type: Sequelize.STRING
+      },
+      userId: {
+        type: Sequelize.INTEGER
+      },
+      setId: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -25,6 +40,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('sets');
+    await queryInterface.dropTable('cards');
   }
 };

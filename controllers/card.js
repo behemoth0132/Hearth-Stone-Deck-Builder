@@ -13,7 +13,7 @@ router.post('/deck', function(req, res){
   const {img, name, text, type, playerClass} = req.body 
   const {id} = req.user
   //create card add user to card
-  db.Card.create({
+  db.card.create({
     img, name, text, type, playerClass, userId:id
   })
   .then(newCard => {

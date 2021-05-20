@@ -2,21 +2,21 @@
   "development": {
     "username": "postgres",
     "password": "jw123456",
-    "database": "express_auth_dev",
+    "database": "fluffy-dollop",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
     "username": "postgres",
     "password": "jw123456",
-    "database": "express_auth_test",
+    "database": "fluffy-dollop_test",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "production": {
     "username": "postgres",
     "password": "jw123456",
-    "database": "express_auth_production",
+    "database": "fluffy-dollop_production",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }

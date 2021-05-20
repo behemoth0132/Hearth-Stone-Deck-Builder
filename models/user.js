@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      models.user.hasMany(models.Card);// define association here
+      models.user.hasMany(models.card);// define association here
     }
   };
   user.init({
