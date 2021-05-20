@@ -10,7 +10,8 @@ const isLoggedIn = require('./middleware/isLoggedIn');
 const axios = require('axios');
 const bodyParser = require('body-parser');
 const fs = require('fs');
-const card = require('./controllers/card');//imported from controllers card
+const methodOverride = require('method-override');
+
 
 app.set('view engine', 'ejs');
 
@@ -25,7 +26,7 @@ app.use(session({
     saveUninitialized: true    // If we have a new session, we save it, therefore making that true
   })
 );
-
+app.use(methodOverride('_method'));
 app.use(flash());    
 app.use(passport.initialize());      // Initialize passport
 app.use(passport.session());         // Add a session
@@ -39,40 +40,8 @@ app.use((req, res, next) => {
 });
 
 
+//put and delete
 
-
-// const cardoptions = {//this is a card search function
-//     method: 'GET',
-//     url: 'https://omgvamp-hearthstone-v1.p.rapidapi.com/cards/search/%7Bname%7D',
-//     headers: {
-//       'x-rapidapi-key': process.env.KEY,
-//       'x-rapidapi-host': 'omgvamp-hearthstone-v1.p.rapidapi.com'
-//     }
-//   };
-  
-
-
-//     axios.request(cardoptions).then(function (response) {
-//       console.log(response.data);
-//   }).catch(function (error) {
-//       console.error(error);
-//   });
-
-  // app.get('/', function(req, res) {
-  //   db.Card.findAll({
-  //     include: [db.Set]
-  //   }).then(function(card) {
-  //     res.render('main/index', { card: card })
-  //   }).catch(function(error) {
-  //     console.log(error)
-  //     res.status(400).render('main/404')
-  //   })
-  // })
-
-  // app.use('/card', require('./controllers/card'));
-  // app.use('/set', require('./controllers/set'));
-  // app.use('/class', require('./controllers/class'));
- 
  
  
   //searchresults page
@@ -103,8 +72,8 @@ app.get('/', (req, res) => {
 
 
 app.use('/auth', require('./controllers/auth'));
+app.use('/cards', require('./controllers/card'));
 
-app.use('/', card);//card route
 
 
 // app.get('/deck-builder', (req, res) => {
