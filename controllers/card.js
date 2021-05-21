@@ -22,5 +22,18 @@ router.post('/deck', function(req, res){
 })
 
 
+router.delete('/deck', function(req, res){
+  const {img, name, text, type, playerClass} = req.body 
+  const {id} = req.user
+  //create card add user to card
+  db.card.destroy({
+    img, name, text, type, playerClass, userId:id
+  })
+  .then(deletedCard => {
+    console.log(deletedCard)
+  })
+})
+
+
 
 module.exports = router;

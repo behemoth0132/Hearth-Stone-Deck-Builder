@@ -64,4 +64,11 @@ db.Set.findAll()
 
 }
 
-fetchSet();
+// 
+db.user.findOne({
+  where: {id: 1},
+  include: [db.card]
+})
+.then(user => {
+  console.log(user.cards);
+})

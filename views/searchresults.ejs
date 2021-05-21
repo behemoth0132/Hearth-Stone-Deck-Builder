@@ -19,5 +19,16 @@
     <input type="Submit" value="Add">
     </form>
     </li>
+    <li>
+      <%= eachCard.name %> is a <%= eachCard.type %> and a <%= eachCard.text %>
+      <form method="DELETE" action="/cards/deck">
+      <input hidden type="text" value="<%= eachCard.name %>" name="name">
+      <input hidden type="text" value="<%= eachCard.text %>" name="text">
+      <input hidden type="text" value="<%= eachCard.img %>" name="img">
+      <input hidden type="text" value="<%= eachCard.type %>" name="type">
+      <input hidden type="text" value="<%= eachCard.playerClass %>" name="playerClass">
+      <input type="Submit" value="Delete">
+      </form>
+    </li>
 <%}) %>
 </ul>
