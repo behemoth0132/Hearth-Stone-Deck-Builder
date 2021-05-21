@@ -4,10 +4,13 @@ const db = require('../models');
 
 
 
-
-router.get('/deck-builder', function(req, res){
-    res.render('deck-builder');
-});
+router.get('/', function(req, res){
+  db.card.findAll()
+  .then(foundCards => {
+    console.log("here is found cards")
+    console.log(foundCards)
+  })
+})
 
 router.post('/deck', function(req, res){
   const {img, name, text, type, playerClass} = req.body 
@@ -18,22 +21,20 @@ router.post('/deck', function(req, res){
   })
   .then(newCard => {
     console.log(newCard)
+    res.redirect('/');
   })
 })
 
 
-router.delete('/deck', function(req, res){
-  const {img, name, text, type, playerClass} = req.body 
-  const {id} = req.user
+router.post('/deck', function(req, res) {
   //create card add user to card
-  db.card.destroy({
-    img, name, text, type, playerClass, userId:id
-  })
-  .then(deletedCard => {
-    console.log(deletedCard)
+  db.comment.create(
+    {description:req.body.description},
+    {where:{cardModelId:req.body.cardId}}
+  )
+  .then(createdComment => {
+    console.log(createdComment)
   })
 })
-
-
 
 module.exports = router;
