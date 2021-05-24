@@ -10,7 +10,8 @@ It is a deck builder where you can add cards to your personal page in order to d
 
 # HOW TO INSTALL
 1. *`Fork`* and *`Clone`* this respository to your local machine
-2. Open `index.html` in your browser to play
+2. Run *`npm install`* then run *`npm start`* and go to your browser and type in whatever local host is displayed in your server.js at this time it is *`3007`*
+or you can go to https://card-selector.herokuapp.com/
 ![alt text](https://i.imgur.com/Pc55FJf.png)
 ![alt text](https://i.imgur.com/D7BTLcW.png)
 ![alt text](https://i.imgur.com/rdb6WnX.png)
