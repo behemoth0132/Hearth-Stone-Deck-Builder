@@ -60,7 +60,7 @@ I would like to organize everything a bit and add more filtering options for loo
 # PROCESS WORK
 
 ## Initial Wireframes:
-![Game Play_Game Play ](https://user-images.githubusercontent.com/81875454/116032576-f0e1c880-a62d-11eb-8fad-80ff430d7d93.png)
+![Initial WireFrame ](https://i.imgur.com/IThMIil.jpg)
 
 # SOURCES
 https://codepen.com
