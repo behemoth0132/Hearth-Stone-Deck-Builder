@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       models.card.belongsTo(models.user);
       models.card.belongsTo(models.set);
+      models.card.hasMany(models.comment);
     }
   };
   card.init({
@@ -22,7 +23,8 @@ module.exports = (sequelize, DataTypes) => {
     playerClass: DataTypes.STRING,
     type: DataTypes.STRING,
     userId: DataTypes.INTEGER,
-    setId: DataTypes.INTEGER,
+    cardId: DataTypes.INTEGER,
+    setId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'card',

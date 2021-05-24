@@ -29,15 +29,15 @@ router.post('/deck', function(req, res){
 })
 
 
-router.post('/deck', function(req, res) {
+router.put('/deck', function(req, res) {
   //create card add user to card
-  db.comment.create(
+  db.comment.update(
     {description:req.body.description},
-    {where:{cardModelId:req.body.card.id}}
+    {where:{cardModelId:req.body.cardId}}
   )
   .then(createdComment => {
     console.log(createdComment)
-    res.render(createdComment)
+    res.redirect('/cards')
   })
 })
 
@@ -48,12 +48,11 @@ router.post('/deck', function(req, res) {
 
 router.delete('/deck', function(req, res) {
   db.card.destroy(
-    {where:{cardId:req.body.cardId}}
+    {where:{id:req.body.cardId}}
   )
   .then(deletedCard => {
-    cardId.pop()
     console.log(deletedCard)
-    res.redirect('deck')
+    res.redirect('/cards')
   })
 })
 
