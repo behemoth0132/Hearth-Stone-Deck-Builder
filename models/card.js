@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     playerClass: DataTypes.STRING,
     type: DataTypes.STRING,
     userId: DataTypes.INTEGER,
-    setId: DataTypes.INTEGER
+    setId: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'card',

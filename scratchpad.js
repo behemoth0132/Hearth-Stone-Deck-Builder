@@ -53,8 +53,8 @@ const db = require('./models');
 
 // addNewCardToSet();
 
-function fetchSet() {
-db.Set.findAll()
+// function fetchSet() 
+db.comment.findAll()
 .then(Set => {
   console.log(Set);
   })
@@ -62,13 +62,13 @@ db.Set.findAll()
  console.log(err);
   })
 
-}
+
 
 // 
-db.user.findOne({
-  where: {id: 1},
-  include: [db.card]
-})
-.then(user => {
-  console.log(user.cards);
-})
+// db.comment.findOne({
+//   where: {id: 1},
+//   include: [db.card]
+// })
+// .then(user => {
+//   console.log(user.comment);
+// })

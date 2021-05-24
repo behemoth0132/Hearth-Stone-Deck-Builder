@@ -6,6 +6,7 @@ nav ul li {
 
 h1 {
   color: chartreuse;
+  text-align: center;
 }
 
 .btn.dropdown-toggle  {
@@ -43,3 +44,24 @@ img {
 img.track {
   border: 1px solid #8a8a8a;
 }
+
+h2 {
+  text-align: center;
+}
+.ball {
+  position: absolute;
+  border-radius: 100%;
+  opacity: 0.7;
+}
+
+.billy {
+  display: inline;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+  background-color: green;
+  border: 2px solid #4CAF50;
+}
+
+
+* { box-sizing: border-box; }
